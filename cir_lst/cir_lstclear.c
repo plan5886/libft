@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cir_lstnew.c                                        :+:      :+:    :+:   */
+/*   cir_lstclear.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 23:16:44 by dha               #+#    #+#             */
-/*   Updated: 2022/03/15 00:56:37 by mypark           ###   ########.fr       */
+/*   Created: 2021/12/01 21:50:16 by mypark            #+#    #+#             */
+/*   Updated: 2022/03/15 03:15:24 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cir_lst.h"
-#include "../libft.h"
 #include <stdlib.h>
 
-t_cir_lst	*cir_lstnew(void *content)
+void	cir_lstclear(t_cir_lst **lst, void (*del)(void *))
 {
-	t_cir_lst	*new_node;
+	t_cir_lst	*node;
 
-	new_node = (t_cir_lst *) malloc(sizeof(t_cir_lst));
-	if (new_node == 0)
-		return (0);
-	new_node->content = content;
-	new_node->next = new_node;
-	new_node->prev = new_node;
-	return (new_node);
+	if (lst == 0 || *lst == 0 || del == 0)
+		return ;
+	while (*lst)
+	{
+		node = cir_lstpop_back(lst);
+		del(node->content);
+		free(node);
+	}
 }

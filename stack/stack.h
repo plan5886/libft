@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cir_lstnew.c                                        :+:      :+:    :+:   */
+/*   stack.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 23:16:44 by dha               #+#    #+#             */
-/*   Updated: 2022/03/15 00:56:37 by mypark           ###   ########.fr       */
+/*   Created: 2022/03/15 02:41:02 by mypark            #+#    #+#             */
+/*   Updated: 2022/03/15 03:06:48 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cir_lst.h"
-#include "../libft.h"
-#include <stdlib.h>
+#ifndef STACK_H
+# define STACK_H
+# include "../cir_lst/cir_lst.h"
 
-t_cir_lst	*cir_lstnew(void *content)
+typedef t_cir_lst t_stack_node;
+
+typedef struct s_stack
 {
-	t_cir_lst	*new_node;
+	t_stack_node	*top;
+	t_stack_node	*(*pop)(struct s_stack *);
+	void			(*push)(struct s_stack *);
+}				t_stack;
 
-	new_node = (t_cir_lst *) malloc(sizeof(t_cir_lst));
-	if (new_node == 0)
-		return (0);
-	new_node->content = content;
-	new_node->next = new_node;
-	new_node->prev = new_node;
-	return (new_node);
-}
+t_stack			*new_stack();
+void			free_stack(t_stack *st, void (*del)(void *));
+t_stack_node	*new_stack_node(void *content)
+
+#endif
