@@ -47,11 +47,28 @@ SRCS_BONUS =	ft_lstadd_back.c\
 				ft_lstmap.c\
 				ft_lstnew.c\
 				ft_lstsize.c\
-				bi_lstnew.c\
-				bi_lstdelone.c\
 				bi_lstadd_back.c\
+				bi_lstadd_front.c\
+				bi_lstdelone.c\
+				bi_lstfind_backward.c\
+				bi_lstfind_forward.c\
 				bi_lstlast.c\
-				bi_lstpop_front.c
+				bi_lstnew.c\
+				bi_lstpop_back.c\
+				bi_lstpop_front.c\
+				bi_lstsize.c\
+				cir_lstadd_back.c\
+				cir_lstadd_front.c\
+				cir_lstclear.c\
+				cir_lstdelone.c\
+				cir_lstfind_backward.c\
+				cir_lstfind_forward.c\
+				cir_lstlast.c\
+				cir_lstnew.c\
+				cir_lstpop_back.c\
+				cir_lstpop_front.c\
+				cir_lstsize.c\
+				stack.c
 
 ifeq ($(CHECK_BONUS), 1)
 	SRCS := $(SRCS) $(SRCS_BONUS)

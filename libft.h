@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 18:45:54 by mypark            #+#    #+#             */
-/*   Updated: 2022/03/15 02:39:29 by mypark           ###   ########.fr       */
+/*   Updated: 2022/03/15 03:27:14 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define LIBFT_H
 # include <unistd.h>
 # include <stdlib.h>
+# include "bi_lst/bi_lst.h"
+# include "cir_lst/cir_lst.h"
+# include "stack.h"
 
 typedef struct s_list
 {
