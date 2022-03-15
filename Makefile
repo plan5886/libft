@@ -68,7 +68,8 @@ SRCS_BONUS =	ft_lstadd_back.c\
 				cir_lstpop_back.c\
 				cir_lstpop_front.c\
 				cir_lstsize.c\
-				stack.c
+				stack.c\
+				queue.c
 
 ifeq ($(CHECK_BONUS), 1)
 	SRCS := $(SRCS) $(SRCS_BONUS)

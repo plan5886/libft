@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mypark <mypark@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 18:45:54 by mypark            #+#    #+#             */
-/*   Updated: 2022/03/15 03:27:14 by mypark           ###   ########.fr       */
+/*   Updated: 2022/03/15 16:56:22 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include <stdlib.h>
 # include "bi_lst/bi_lst.h"
 # include "cir_lst/cir_lst.h"
-# include "stack.h"
+# include "stack/stack.h"
+# include "queue/queue.h"
 
 typedef struct s_list
 {

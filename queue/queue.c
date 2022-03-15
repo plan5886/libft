@@ -1,47 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   queue.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 02:48:54 by mypark            #+#    #+#             */
-/*   Updated: 2022/03/15 16:58:08 by mypark           ###   ########.fr       */
+/*   Updated: 2022/03/15 17:01:57 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "queue.h"
 #include <stdlib.h>
 
-static t_stack_node	*pop(struct s_stack *st)
+static t_queue_node	*pop(struct s_queue *q)
 {
-	return (cir_lstpop_front(&st->top));
+	return (cir_lstpop_front(&q->head));
 }
 
-static void	push(t_stack *st, t_stack_node *new)
+static void	push(t_queue *q, t_queue_node *new)
 {
-	cir_lstadd_front(&st->top, new);
+	cir_lstadd_back(q->head, new);
 }
 
-t_stack_node	*new_stack_node(void *content)
+t_queue_node	*new_queue_node(void *content)
 {
 	return (cir_lstnew(content));
 }
 
-t_stack	*new_stack()
+t_queue	*new_queue()
 {
-	t_stack	*st;
+	t_queue	*q;
 
-	st = malloc(sizeof(t_stack));
-	if (st == NULL)
+	q = malloc(sizeof(t_queue));
+	if (q == NULL)
 		return (NULL);
-	st->pop = pop;
-	st->push = push;
-	return (st);
+	q->pop = pop;
+	q->push = push;
+	return (q);
 }
 
-void	free_stack(t_stack *st, void (*del)(void *))
+void	free_queue(t_queue *q, void (*del)(void *))
 {
-	cir_lstclear(&st->top, del);
-	free(st);
+	cir_lstclear(&q->head, del);
+	free(q);
 }
