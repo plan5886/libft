@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:03:23 by mypark            #+#    #+#             */
-/*   Updated: 2021/12/03 17:35:21 by mypark           ###   ########.fr       */
+/*   Updated: 2022/03/17 02:13:20 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static char	**word_alloc(char const *s, char c)
 	return (words);
 }
 
-static void	*free_words(char **words, int wc)
+static void	*_free_words(char **words, int wc)
 {
 	while (wc-- > 0)
 	{
@@ -92,7 +92,7 @@ char	**ft_split(char const *s, char c)
 		{
 			words[wc] = malloc(sizeof(char) * ((i - start + 1) + 1));
 			if (words[wc] == NULL)
-				return (free_words(words, wc));
+				return (_free_words(words, wc));
 			ft_strlcpy(words[wc++], s + start, (i - start + 1) + 1);
 		}
 		i++;
