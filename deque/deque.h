@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 16:45:50 by mypark            #+#    #+#             */
-/*   Updated: 2022/03/18 15:39:14 by mypark           ###   ########.fr       */
+/*   Updated: 2022/03/18 16:13:57 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,12 @@ typedef struct s_deque
 {
 	t_deque_node	*head;
 	t_deque_node	*tail;
-	void			(*push)(struct s_deque *, t_deque_node *);
-	t_deque_node	*(*pop_tail)(struct s_deque *);
-	t_deque_node	*(*pop_head)(struct s_deque *);
+	int				(*push)(struct s_deque *, void *);
+	void			*(*pop_tail)(struct s_deque *);
+	void			*(*pop_head)(struct s_deque *);
 }				t_deque;
 
 t_deque			*new_deque();
 void			free_deque(t_deque *dq, void (*del)(void *));
-t_deque_node	*new_deque_node(void *content);
 
 #endif

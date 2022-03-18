@@ -6,31 +6,40 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 02:48:54 by mypark            #+#    #+#             */
-/*   Updated: 2022/03/17 21:07:34 by mypark           ###   ########.fr       */
+/*   Updated: 2022/03/18 16:23:33 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "queue.h"
 #include <stdlib.h>
 
-static t_queue_node	*pop(struct s_queue *q)
+static void	*pop(struct s_queue *q)
 {
 	t_queue_node	*node;
+	void			*content;
 
 	node = cir_lstpop_front(&q->head);
 	q->tail = q->head->prev;
-	return (node);
+	content = node->content;
+	free(node);
+	return (content);
 }
 
-static void	push(t_queue *q, t_queue_node *new)
-{
-	cir_lstadd_back(q->head, new);
-	q->tail = q->head->prev;
-}
-
-t_queue_node	*new_queue_node(void *content)
+static t_queue_node	*new_queue_node(void *content)
 {
 	return (cir_lstnew(content));
+}
+
+static int	push(t_queue *q, void * content)
+{
+	t_queue_node	*new;
+	
+	new = new_queue_node(content);
+	if (new == 0)
+		return (0);
+	cir_lstadd_back(q->head, new);
+	q->tail = q->head->prev;
+	return (1);
 }
 
 t_queue	*new_queue()

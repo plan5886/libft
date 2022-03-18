@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 02:41:02 by mypark            #+#    #+#             */
-/*   Updated: 2022/03/15 16:58:19 by mypark           ###   ########.fr       */
+/*   Updated: 2022/03/18 16:21:46 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ typedef t_cir_lst t_stack_node;
 typedef struct s_stack
 {
 	t_stack_node	*top;
-	t_stack_node	*(*pop)(struct s_stack *);
-	void			(*push)(struct s_stack *, t_stack_node *);
+	void			*(*pop)(struct s_stack *);
+	int				(*push)(struct s_stack *, void *);
 }				t_stack;
 
 t_stack			*new_stack();
 void			free_stack(t_stack *st, void (*del)(void *));
-t_stack_node	*new_stack_node(void *content);
 
 #endif
