@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bi_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_splitfree.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mypark <mypark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 23:16:36 by dha               #+#    #+#             */
-/*   Updated: 2022/03/26 19:37:28 by mypark           ###   ########.fr       */
+/*   Created: 2022/03/24 14:20:32 by mypark            #+#    #+#             */
+/*   Updated: 2022/03/27 13:56:07 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bi_lst.h"
 #include <stdlib.h>
 
-void	bi_lstdelone(t_bi_lst *lst, void (*del)(void *))
+void	ft_splitfree(char **words)
 {
-	if (lst == 0)
-		return ;
-	if (lst->prev)
-		lst->prev->next = lst->next;
-	if (lst->next)
-		lst->next->prev = lst->prev;
-	del(lst->content);
-	free(lst);
+	int	wi;
+
+	wi = 0;
+	while (words[wi])
+		free(words[wi++]);
+	free(words[wi]);
+	free(words);
 }

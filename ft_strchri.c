@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cir_lstfind_backward.c                             :+:      :+:    :+:   */
+/*   ft_strchri.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 16:06:32 by mypark            #+#    #+#             */
-/*   Updated: 2022/03/23 16:06:52 by mypark           ###   ########.fr       */
+/*   Created: 2021/11/25 18:47:39 by mypark            #+#    #+#             */
+/*   Updated: 2022/04/02 20:26:15 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cir_lst.h"
-
-t_cir_lst	*cir_lstfind_backward(t_cir_lst *curr, void *target, \
-								int (*cmp)(void *, void *))
+int	ft_strchri(const char *s, int c)
 {
-	t_cir_lst	*memo;
+	int	i;
 
-	if (curr == 0 || target == 0)
-		return (0);
-	if (cmp(target, curr->content) == 0)
-		return (curr);
-	memo = curr;
-	curr = curr->next;
-	while (curr != memo)
+	i = 0;
+	while (s[i])
 	{
-		if (cmp(target, curr->content) == 0)
-			return (curr);
-		curr = curr->next;
+		if (s[i] == (char)c)
+			return (i);
+		i++;
 	}
-	return (0);
+	if ((char)c == '\0')
+		return (-1);
+	return (-1);
 }

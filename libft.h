@@ -6,7 +6,7 @@
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 18:45:54 by mypark            #+#    #+#             */
-/*   Updated: 2022/03/15 16:56:22 by mypark           ###   ########.fr       */
+/*   Updated: 2022/04/06 19:59:48 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "cir_lst/cir_lst.h"
 # include "stack/stack.h"
 # include "queue/queue.h"
+# include "deque/deque.h"
 
 typedef struct s_list
 {
@@ -41,6 +42,7 @@ size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 char	*ft_strchr(const char *s, int c);
+int		ft_strchri(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strdup(const char *s);
@@ -48,6 +50,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strmerge(char *s1, char *s2);
 char	*ft_strappend(char *s1, char const *s2);
+char	*ft_strprepend(const char *s1, char *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
@@ -70,8 +73,15 @@ void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
+t_list	*ft_lstdup(t_list *lst, void *(*dup)(void *));
+t_list	*ft_lstpop_front(t_list **head);
 
 char	*ft_realloc(char *original, int desired);
 void	ft_strtoupper(char *s);
+void	ft_splitfree(char **words);
+char	**ft_splitdup(char **old_words);
+char	*ft_strdiv(char **front, int index);
+int		ft_wordcount(char **words);
+char	*ft_strndup(const char *s1, int n);
 
 #endif

@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cir_lstfind_backward.c                             :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 16:06:32 by mypark            #+#    #+#             */
-/*   Updated: 2022/03/23 16:06:52 by mypark           ###   ########.fr       */
+/*   Created: 2021/12/13 19:47:39 by mypark            #+#    #+#             */
+/*   Updated: 2022/04/06 19:59:38 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cir_lst.h"
+#include "libft.h"
 
-t_cir_lst	*cir_lstfind_backward(t_cir_lst *curr, void *target, \
-								int (*cmp)(void *, void *))
+char	*ft_strndup(const char *s1, int n)
 {
-	t_cir_lst	*memo;
+	char	*dup;
 
-	if (curr == 0 || target == 0)
-		return (0);
-	if (cmp(target, curr->content) == 0)
-		return (curr);
-	memo = curr;
-	curr = curr->next;
-	while (curr != memo)
-	{
-		if (cmp(target, curr->content) == 0)
-			return (curr);
-		curr = curr->next;
-	}
-	return (0);
+	dup = malloc(sizeof(char) * n + 1);
+	if (dup == NULL)
+		return (NULL);
+	ft_strlcpy(dup, s1, n + 1);
+	return (dup);
 }

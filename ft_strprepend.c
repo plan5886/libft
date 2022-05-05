@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bi_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_strprepend.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mypark <mypark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 23:16:36 by dha               #+#    #+#             */
-/*   Updated: 2022/03/26 19:37:28 by mypark           ###   ########.fr       */
+/*   Created: 2022/03/13 17:08:17 by mypark            #+#    #+#             */
+/*   Updated: 2022/04/03 23:59:49 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bi_lst.h"
-#include <stdlib.h>
+#include "libft.h"
 
-void	bi_lstdelone(t_bi_lst *lst, void (*del)(void *))
+char	*ft_strprepend(const char *s1, char *s2)
 {
-	if (lst == 0)
-		return ;
-	if (lst->prev)
-		lst->prev->next = lst->next;
-	if (lst->next)
-		lst->next->prev = lst->prev;
-	del(lst->content);
-	free(lst);
+	char	*s3;
+
+	s3 = ft_strjoin(s1, s2);
+	free(s2);
+	return (s3);
 }

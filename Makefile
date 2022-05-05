@@ -27,6 +27,7 @@ SRCS =	ft_atoi.c\
 		ft_strlen.c\
 		ft_strmapi.c\
 		ft_strncmp.c\
+		ft_strndup.c\
 		ft_strnstr.c\
 		ft_strrchr.c\
 		ft_strtrim.c\
@@ -36,7 +37,13 @@ SRCS =	ft_atoi.c\
 		ft_strtoupper.c\
 		ft_realloc.c\
 		ft_strmerge.c\
-		ft_strappend.c
+		ft_strappend.c\
+		ft_strprepend.c\
+		ft_splitfree.c\
+		ft_splitdup.c\
+		ft_wordcount.c\
+		ft_strchri.c\
+		ft_strdiv.c
 
 SRCS_BONUS =	ft_lstadd_back.c\
 				ft_lstadd_front.c\
@@ -47,6 +54,8 @@ SRCS_BONUS =	ft_lstadd_back.c\
 				ft_lstmap.c\
 				ft_lstnew.c\
 				ft_lstsize.c\
+				ft_lstdup.c\
+				ft_lstpop_front.c\
 				bi_lstadd_back.c\
 				bi_lstadd_front.c\
 				bi_lstdelone.c\
@@ -71,7 +80,9 @@ SRCS_BONUS =	ft_lstadd_back.c\
 				stack.c\
 				queue.c\
 				free_deque.c\
-				new_deque.c
+				new_deque.c\
+				pop_deque.c\
+				push_deque.c
 
 ifeq ($(CHECK_BONUS), 1)
 	SRCS := $(SRCS) $(SRCS_BONUS)

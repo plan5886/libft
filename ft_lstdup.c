@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/17 14:16:16 by mypark            #+#    #+#             */
-/*   Updated: 2022/04/12 01:26:08 by mypark           ###   ########.fr       */
+/*   Created: 2021/12/01 21:40:33 by mypark            #+#    #+#             */
+/*   Updated: 2022/03/27 12:05:30 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+t_list	*ft_lstdup(t_list *lst, void *(*dup)(void *))
 {
-	size_t	n;
+	t_list	*new_lst;
 
-	if (s == 0)
-		return (0);
-	n = 0;
-	while (s[n])
-		n++;
-	return (n);
+	if (lst == NULL)
+		return (NULL);
+	new_lst = NULL;
+	while (lst)
+	{
+		ft_lstadd_back(&new_lst, ft_lstnew(dup(lst->content)));
+		lst = lst->next;
+	}
+	return (new_lst);
 }

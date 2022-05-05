@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_splitfree.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/17 14:16:16 by mypark            #+#    #+#             */
-/*   Updated: 2022/04/12 01:26:08 by mypark           ###   ########.fr       */
+/*   Created: 2022/03/24 14:20:32 by mypark            #+#    #+#             */
+/*   Updated: 2022/03/27 13:56:07 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+char	**ft_splitdup(char **old_words)
 {
-	size_t	n;
+	char	**new_words;
+	int		count;
+	int		i;
 
-	if (s == 0)
+	count = ft_wordcount(old_words);
+	new_words = malloc(sizeof(char *) * (count + 1));
+	if (new_words == 0)
 		return (0);
-	n = 0;
-	while (s[n])
-		n++;
-	return (n);
+	new_words[count] = 0;
+	i = 0;
+	while (old_words[i])
+	{
+		new_words[i] = ft_strdup(old_words[i]);
+		i++;
+	}
+	return (new_words);
 }

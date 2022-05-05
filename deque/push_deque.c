@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_deque.c                                        :+:      :+:    :+:   */
+/*   push_deque.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/15 02:48:54 by mypark            #+#    #+#             */
-/*   Updated: 2022/03/23 16:16:20 by mypark           ###   ########.fr       */
+/*   Created: 2022/03/23 16:11:29 by mypark            #+#    #+#             */
+/*   Updated: 2022/03/23 16:31:06 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "deque.h"
 #include "deque_utils.h"
-#include <stdlib.h>
 
-t_deque_node	*new_deque_node(void *content)
+int	push_tail(t_deque *dq, void *content)
 {
-	return (cir_lstnew(content));
+	t_deque_node	*new;
+
+	new = new_deque_node(content);
+	if (new == 0)
+		return (0);
+	cir_lstadd_back(&dq->head, new);
+	dq->tail = dq->head->prev;
+	return (1);
 }
 
-t_deque	*new_deque(void)
+int	push_head(t_deque *dq, void *content)
 {
-	t_deque	*dq;
+	t_deque_node	*new;
 
-	dq = malloc(sizeof(t_deque));
-	if (dq == NULL)
-		return (NULL);
-	dq->head = NULL;
-	dq->tail = NULL;
-	dq->pop_head = pop_head;
-	dq->pop_tail = pop_tail;
-	dq->push_head = push_head;
-	dq->push_tail = push_tail;
-	return (dq);
+	new = new_deque_node(content);
+	if (new == 0)
+		return (0);
+	cir_lstadd_front(&dq->head, new);
+	dq->tail = dq->head->prev;
+	return (1);
 }

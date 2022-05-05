@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cir_lstfind_backward.c                             :+:      :+:    :+:   */
+/*   ft_lstpop_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mypark <mypark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 16:06:32 by mypark            #+#    #+#             */
-/*   Updated: 2022/03/23 16:06:52 by mypark           ###   ########.fr       */
+/*   Created: 2022/01/27 19:30:35 by dha               #+#    #+#             */
+/*   Updated: 2022/04/01 19:11:06 by mypark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cir_lst.h"
+#include "libft.h"
 
-t_cir_lst	*cir_lstfind_backward(t_cir_lst *curr, void *target, \
-								int (*cmp)(void *, void *))
+t_list	*ft_lstpop_front(t_list **head)
 {
-	t_cir_lst	*memo;
+	t_list	*second;
+	t_list	*first;
 
-	if (curr == 0 || target == 0)
+	if (head == 0 || *head == 0)
 		return (0);
-	if (cmp(target, curr->content) == 0)
-		return (curr);
-	memo = curr;
-	curr = curr->next;
-	while (curr != memo)
-	{
-		if (cmp(target, curr->content) == 0)
-			return (curr);
-		curr = curr->next;
-	}
-	return (0);
+	second = (*head)->next;
+	first = (*head);
+	first->next = 0;
+	(*head) = second;
+	return (first);
 }
