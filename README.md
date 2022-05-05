@@ -2,9 +2,12 @@
 
 42 서울 libft
 
-+++++
+++++++++++++++++++++++++++++
 
-자료구조 (충분히 검증되지 않 릭이나 세그폴트가 뜰 수 있음!)
+ft_wordcount.c : 문자열의 갯수를 세서 반환한다.
+
+
+자료구조 
 * content : deep-copy 요망
 * uni-directional list
 * bi-directional list
